@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class LoginView: UIViewController {
 
@@ -18,9 +19,18 @@ class LoginView: UIViewController {
         super.viewDidLoad()
         if Auth.auth().currentUser != nil
         {
-            performSegue(withIdentifier: "ltm", sender: self)
+            print("logged in")
+            do {
+                try Auth.auth().signOut()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+            
         }
-        print(Auth.auth().currentUser?.uid)
+        if (Auth.auth().currentUser == nil)
+        {
+            print("logged out")
+        }
         
     }
 
@@ -28,8 +38,19 @@ class LoginView: UIViewController {
     @IBAction func signUpAction(_ sender: UIButton) { //login action
         if emailText.text != nil && passText.text != nil
         {
-            Auth.auth().signIn(withEmail: emailText.text!, password: passText.text!, completion: nil)
-            performSegue(withIdentifier: "ltm", sender: self)
+            Auth.auth().signIn(withEmail: emailText.text!, password: passText.text!, completion: { (user, err) in
+                if err != nil
+                {
+                    print(err!)
+                }
+                else
+                {
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Main") as! MainViewController
+                    self.present(nextViewController, animated:true, completion:nil)
+                }
+            })
         }
     }
     
