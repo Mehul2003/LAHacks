@@ -20,6 +20,10 @@ class SettingsViewController: UIViewController {
     @IBAction func logOut(_ sender: UIButton) {
         do {
         try Auth.auth().signOut()
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginView
+            self.present(nextViewController, animated:true, completion:nil)
         } catch let signOutError as NSError {
         print ("Error signing out: %@", signOutError)
         }

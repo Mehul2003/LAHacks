@@ -182,6 +182,20 @@ class QuestionsViewController: UIViewController {
             nextButton.setTitle("Next", for: .normal)
             qNum.text = ""
             line.isHidden = true
+            let ref = Database.database().reference()
+            let userID = Auth.auth().currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let fname = value?["first name"] as? String ?? ""
+                let lname = value?["last name"] as? String ?? ""
+                let pass = value?["password"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                let image = value?["img"] as? String ?? ""
+                let values = ["first name" : fname, "last name" : lname, "email" : email, "password" : pass, "score" : "\(self.score)", "img" : image]
+                ref.child("users").child(userID!).setValue(values)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
 
         }
     }
@@ -333,6 +347,20 @@ class QuestionsViewController: UIViewController {
             nextButton.setTitle("Next", for: .normal)
             qNum.text = ""
             line.isHidden = true
+            let ref = Database.database().reference()
+            let userID = Auth.auth().currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let fname = value?["first name"] as? String ?? ""
+                let lname = value?["last name"] as? String ?? ""
+                let pass = value?["password"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                let image = value?["img"] as? String ?? ""
+                let values = ["first name" : fname, "last name" : lname, "email" : email, "password" : pass, "score" : "\(self.score)", "img" : image]
+                ref.child("users").child(userID!).setValue(values)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
 
         }
     }
@@ -480,6 +508,20 @@ class QuestionsViewController: UIViewController {
             nextButton.setTitle("Next", for: .normal)
             qNum.text = ""
             line.isHidden = true
+            let ref = Database.database().reference()
+            let userID = Auth.auth().currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let fname = value?["first name"] as? String ?? ""
+                let lname = value?["last name"] as? String ?? ""
+                let pass = value?["password"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                let image = value?["img"] as? String ?? ""
+                let values = ["first name" : fname, "last name" : lname, "email" : email, "password" : pass, "score" : "\(self.score)", "img" : image]
+                ref.child("users").child(userID!).setValue(values)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
 
         }
     }
@@ -607,6 +649,20 @@ class QuestionsViewController: UIViewController {
             nextButton.setTitle("Next", for: .normal)
             qNum.text = ""
             line.isHidden = true
+            let ref = Database.database().reference()
+            let userID = Auth.auth().currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let fname = value?["first name"] as? String ?? ""
+                let lname = value?["last name"] as? String ?? ""
+                let pass = value?["password"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                let image = value?["img"] as? String ?? ""
+                let values = ["first name" : fname, "last name" : lname, "email" : email, "password" : pass, "score" : "\(self.score)", "img" : image]
+                ref.child("users").child(userID!).setValue(values)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -627,19 +683,6 @@ class QuestionsViewController: UIViewController {
         }
         else if cq == 11
         {
-            let ref = Database.database().reference()
-            let userID = Auth.auth().currentUser?.uid
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                let fname = value?["first name"] as? String ?? ""
-                let lname = value?["last name"] as? String ?? ""
-                let pass = value?["password"] as? String ?? ""
-                let email = value?["email"] as? String ?? ""
-                let values = ["first name" : fname, "last name" : lname, "email" : email, "password" : pass, "score" : "\(self.score)"]
-                ref.child("users").child(userID!).setValue(values)
-            }) { (error) in
-                print(error.localizedDescription)
-            }
             
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             

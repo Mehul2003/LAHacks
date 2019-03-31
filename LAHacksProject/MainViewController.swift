@@ -14,28 +14,29 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
+    var fname: String = ""
+    var lname: String = ""
+    var email: String = ""
+    var score: String = ""
+    var pass: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         let userID = Auth.auth().currentUser?.uid
-        print(Auth.auth().currentUser?.email)
-        print(Auth.auth().currentUser?.uid)
         Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let fname = value?["first name"] as? String ?? ""
-            let lname = value?["last name"] as? String ?? ""
-            let score = value?["score"] as? String ?? ""
-            self.scoreLabel.text = score
-            self.nameLabel.text = "\(fname) \(lname)"
+            self.fname = value?["first name"] as? String ?? ""
+            self.lname = value?["last name"] as? String ?? ""
+            self.score = value?["score"] as? String ?? ""
+            self.score = value?["score"] as? String ?? ""
+            self.pass = value?["password"] as? String ?? ""
+            self.nameLabel.text = "\(self.fname) \(self.lname)"
+            self.scoreLabel.text = self.score
+            print(snapshot)
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        Database.database().reference().child("users").child(userID!).observe(.childChanged) { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let score = value?["score"] as? String ?? ""
-            self.scoreLabel.text = score
-        }
     }
+    
     @IBAction func changeImage(_ sender: UIButton) {
         let p = UIImagePickerController()
         p.delegate = self
@@ -48,6 +49,20 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let img =  info["UIImagePickerControllerEditedImage"] as? UIImage
         image.image = img
+        let imgName = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("\(imgName).png")
+        if let uploadData = UIImagePNGRepresentation(image.image!) {
+            storageRef.putData(uploadData, metadata: nil, completion: { (meta, err) in
+                if err != nil {
+                    print(err!)
+                }
+                if let imgURL = meta?.downloadURL()?.absoluteString
+                {
+                    let values = ["first name" : self.fname, "last name" : self.lname, "email" : self.email, "password" : self.pass, "score" : self.score, "img" : imgURL]
+                    Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue(values)
+                }
+            })
+        }
         dismiss(animated: true, completion: nil)
     }
     

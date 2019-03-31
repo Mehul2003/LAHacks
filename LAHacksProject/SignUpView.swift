@@ -38,7 +38,7 @@ class SignUpView: UIViewController {
                 print(Auth.auth().currentUser != nil)
                 let ref = Database.database().reference()
                 let uref = ref.child("users")
-                let values = ["first name" : self.fName.text!, "last name" : self.lName.text!, "email" : self.email.text!, "password" : self.pass.text!, "score" : "0.0"]
+                let values = ["first name" : self.fName.text!, "last name" : self.lName.text!, "email" : self.email.text!, "password" : self.pass.text!, "score" : "0.0", "img" : ""]
                 uref.child((user?.uid)!).setValue(values)
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 

@@ -38,6 +38,7 @@ class LoginView: UIViewController {
     @IBAction func signUpAction(_ sender: UIButton) { //login action
         if emailText.text != nil && passText.text != nil
         {
+            SVProgressHUD.show()
             Auth.auth().signIn(withEmail: emailText.text!, password: passText.text!, completion: { (user, err) in
                 if err != nil
                 {
@@ -45,6 +46,7 @@ class LoginView: UIViewController {
                 }
                 else
                 {
+                    SVProgressHUD.dismiss()
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     
                     let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Main") as! MainViewController
