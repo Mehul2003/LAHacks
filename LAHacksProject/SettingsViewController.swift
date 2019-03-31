@@ -28,4 +28,7 @@ class SettingsViewController: UIViewController {
         print ("Error signing out: %@", signOutError)
         }
     }
+    @IBAction func back(_ sender: UIButton) {
+        performSegue(withIdentifier: "tM", sender: self)
+    }
 }

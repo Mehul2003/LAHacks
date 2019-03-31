@@ -15,4 +15,7 @@ class MapViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func back(_ sender: UIButton) {
+        performSegue(withIdentifier: "toMain", sender: self)
+    }
 }

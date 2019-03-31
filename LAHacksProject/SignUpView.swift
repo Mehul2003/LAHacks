@@ -30,6 +30,7 @@ class SignUpView: UIViewController {
             if err != nil
             {
                 print(err!)
+                SVProgressHUD.dismiss()
             }
             else
             {

@@ -29,9 +29,16 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.score = value?["score"] as? String ?? ""
             self.score = value?["score"] as? String ?? ""
             self.pass = value?["password"] as? String ?? ""
+            //let imageURL = value?["img"] as? String ?? ""
             self.nameLabel.text = "\(self.fname) \(self.lname)"
             self.scoreLabel.text = self.score
-            print(snapshot)
+//            if let profileURL = imageURL {
+//                let url = NSURL(string: profileURL)
+//                URLSession.sharedSession().dataTaskWithURL(url!)
+//                URLSession.session
+//            }
+            //self.image.image
+            //print(snapshot)
         }) { (error) in
             print(error.localizedDescription)
         }

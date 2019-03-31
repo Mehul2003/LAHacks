@@ -17,6 +17,9 @@
 		70615C9E224F4F66006EF9B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70615C9D224F4F65006EF9B5 /* GoogleService-Info.plist */; };
 		7073D9B02251169000EB3D73 /* ChatViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7073D9AF2251169000EB3D73 /* ChatViewController2.swift */; };
 		7073D9B2225116B300EB3D73 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7073D9B1225116B300EB3D73 /* MapViewController.swift */; };
+		7073D9B42251325700EB3D73 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7073D9B32251325700EB3D73 /* Message.swift */; };
+		7073D9B62251330800EB3D73 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7073D9B52251330800EB3D73 /* MessageCell.xib */; };
+		7073D9B82251330C00EB3D73 /* CustomMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7073D9B72251330C00EB3D73 /* CustomMessageCell.swift */; };
 		708B2971224FF29F00FD5709 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B2970224FF29F00FD5709 /* SignUpView.swift */; };
 		70EA00CB22503C5B00E0D603 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA00CA22503C5B00E0D603 /* SettingsViewController.swift */; };
 		70EA00CD2250408E00E0D603 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA00CC2250408E00E0D603 /* QuestionsViewController.swift */; };
@@ -39,6 +42,9 @@
 		70615C9D224F4F65006EF9B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7073D9AF2251169000EB3D73 /* ChatViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController2.swift; sourceTree = "<group>"; };
 		7073D9B1225116B300EB3D73 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7073D9B32251325700EB3D73 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		7073D9B52251330800EB3D73 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageCell.xib; path = ../../../../MessageCell.xib; sourceTree = "<group>"; };
+		7073D9B72251330C00EB3D73 /* CustomMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomMessageCell.swift; path = ../../../../CustomMessageCell.swift; sourceTree = "<group>"; };
 		708B2970224FF29F00FD5709 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		70EA00CA22503C5B00E0D603 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		70EA00CC2250408E00E0D603 /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
@@ -83,12 +89,15 @@
 				70615C88224F42A7006EF9B5 /* LoginView.swift */,
 				708B2970224FF29F00FD5709 /* SignUpView.swift */,
 				70EA00CC2250408E00E0D603 /* QuestionsViewController.swift */,
+				7073D9B72251330C00EB3D73 /* CustomMessageCell.swift */,
 				70F678782250093700384EE9 /* MainViewController.swift */,
 				70EA00CA22503C5B00E0D603 /* SettingsViewController.swift */,
+				7073D9B1225116B300EB3D73 /* MapViewController.swift */,
 				700399DD2250BC0F00AECDB1 /* ChatViewController.swift */,
 				7073D9AF2251169000EB3D73 /* ChatViewController2.swift */,
-				7073D9B1225116B300EB3D73 /* MapViewController.swift */,
 				70615C8A224F42A7006EF9B5 /* Main.storyboard */,
+				7073D9B52251330800EB3D73 /* MessageCell.xib */,
+				7073D9B32251325700EB3D73 /* Message.swift */,
 				70615C8D224F42A7006EF9B5 /* Assets.xcassets */,
 				70615C8F224F42A7006EF9B5 /* LaunchScreen.storyboard */,
 				70615C92224F42A7006EF9B5 /* Info.plist */,
@@ -178,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70615C91224F42A7006EF9B5 /* LaunchScreen.storyboard in Resources */,
+				7073D9B62251330800EB3D73 /* MessageCell.xib in Resources */,
 				70615C9E224F4F66006EF9B5 /* GoogleService-Info.plist in Resources */,
 				700399DC2250B58D00AECDB1 /* Icon.png in Resources */,
 				70615C8E224F42A7006EF9B5 /* Assets.xcassets in Resources */,
@@ -255,12 +265,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				708B2971224FF29F00FD5709 /* SignUpView.swift in Sources */,
+				7073D9B82251330C00EB3D73 /* CustomMessageCell.swift in Sources */,
 				70615C89224F42A7006EF9B5 /* LoginView.swift in Sources */,
 				70EA00CD2250408E00E0D603 /* QuestionsViewController.swift in Sources */,
 				700399DE2250BC0F00AECDB1 /* ChatViewController.swift in Sources */,
 				7073D9B2225116B300EB3D73 /* MapViewController.swift in Sources */,
 				70615C87224F42A7006EF9B5 /* AppDelegate.swift in Sources */,
 				7073D9B02251169000EB3D73 /* ChatViewController2.swift in Sources */,
+				7073D9B42251325700EB3D73 /* Message.swift in Sources */,
 				70EA00CB22503C5B00E0D603 /* SettingsViewController.swift in Sources */,
 				70F678792250093700384EE9 /* MainViewController.swift in Sources */,
 			);

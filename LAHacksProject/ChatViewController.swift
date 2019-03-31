@@ -16,7 +16,11 @@ class ChatViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func startChat(_ sender: UIButton) {
+        
         performSegue(withIdentifier: "chat", sender: self)
+    }
+    @IBAction func back(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToMain", sender: self)
     }
     
 }
